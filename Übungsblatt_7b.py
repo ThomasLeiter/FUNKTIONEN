@@ -69,12 +69,16 @@ print(daten_im_februar)
 
 # Aufgabe 5
 
-gueltige_daten_im_februar = list(filter(lambda datum: gueltiges_datum(*datum) == (True,True,True), daten_im_februar))
+# Statt all(gueltiges_datum(*datum)) hätte man auch
+# gueltiges_datum(*datum) = (True, True, True) hardcodieren können.
+gueltige_daten_im_februar = list(filter(lambda datum: all(gueltiges_datum(*datum)), daten_im_februar))
 print(gueltige_daten_im_februar)
 
 # Aufgabe 6
 
 formatierte_daten = [datum_formatieren(*datum) for datum in daten]
+# Statt des Sortierens der formattierten Daten wäre es sinnvoller,
+# die Rohdaten aus Zahlentupeln zu sortieren
 formatierte_daten.sort(key=lambda datum: (datum[6:10],datum[3:5],datum[:2]))
 print(formatierte_daten)
 
